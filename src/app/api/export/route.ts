@@ -9,7 +9,7 @@ export async function GET() {
   }
   const buf = await generateWorkbook();
   const filename = `Laporan_Keuangan_Griya_Sentosa_${new Date().toISOString().slice(0, 10)}.xlsx`;
-  return new NextResponse(buf, {
+  return new NextResponse(new Uint8Array(buf), {
     headers: {
       "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
       "Content-Disposition": `attachment; filename="${filename}"`,
